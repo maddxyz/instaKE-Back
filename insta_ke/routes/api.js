@@ -127,11 +127,11 @@ router.get('/wall', function(req, res, next) {
 
 });
 
-router.post('/profil', function(req, res, next) {
+router.get('/profil', function(req, res, next) {
     if(!security.verify_token(req.token))
         return res.json([{}]);
     else {
-        models.User.findOne({user: security.get_username(req.token)}, function(err, user) {
+        models.User.findOne({user: security.get_username(req.token)}, function(err, userName) {
             if(userName) {
                 models.Image.find({user: userName}, {"img": 1, "description": 1}, function(err, images) {
                     return res.json(images);
