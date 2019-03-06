@@ -11,6 +11,15 @@ var UserSchema = new Schema({
     admin: Boolean
 });
 
-var User = mongoose.model('User', UserSchema);
+// Images will be retrieved by their id
+var ImageSchema = new Schema({
+    user: UserSchema,
+    addDate: Date,
+    description: String,
+    img: String
+});
 
-module.exports = User;
+var User = mongoose.model('User', UserSchema);
+var Image = mongoose.model('Image', ImageSchema);
+
+module.exports = { User, Image};

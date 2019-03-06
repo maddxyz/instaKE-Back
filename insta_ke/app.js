@@ -4,6 +4,7 @@ var cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const bearerToken = require('express-bearer-token');
 
 // to remove
 process.env.NODE_ENV= "development";
@@ -13,6 +14,7 @@ process.env.NODE_ENV= "development";
 var apiRouter = require('./routes/api');
 
 var app = express();
+app.use(bearerToken());
 
 // Database connection
 
