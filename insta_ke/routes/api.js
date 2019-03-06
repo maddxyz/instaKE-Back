@@ -145,5 +145,3 @@ router.get('/profil', function(req, res, next) {
 });
 
 module.exports = router;
-
-
